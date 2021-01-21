@@ -201,7 +201,8 @@ main(int argc, char **argv)
         fprintf(stderr, "Failed to receive M-Bus response frame.\n");
         return 1;
     }
-
+	
+	//Reset to prepare for future requests
 	if (init_slaves(handle,address) == 0)
 	{
 		mbus_disconnect(handle);
