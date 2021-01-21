@@ -118,13 +118,6 @@ main(int argc, char **argv)
         return 1;
     }
 
-    if (init_slaves(handle) == 0)
-    {
-        mbus_disconnect(handle);
-        mbus_context_free(handle);
-        return 1;
-    }
-
     if (mbus_is_secondary_address(addr_str))
     {
         // secondary addressing
