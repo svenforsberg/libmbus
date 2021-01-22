@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <limits.h>
 #include <fcntl.h>
+#include <sys/ioctl.h>
 
 #include <sys/types.h>
 
@@ -91,6 +92,13 @@ mbus_serial_connect(mbus_handle *handle)
 #endif
 
     tcsetattr(handle->fd, TCSANOW, term);
+	
+	if(ioctl(handle->fd, TIOCEXCL, NULL) != 0)
+	{
+		fprintf(stderr, "%s: failed to run tty ioctl.", __PRETTY_FUNCTION__);
+		mbus_serial_disconnect(handle);
+        return -1;
+	}
 
     return 0;
 }
