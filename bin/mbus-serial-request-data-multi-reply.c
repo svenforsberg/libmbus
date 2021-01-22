@@ -151,6 +151,7 @@ main(int argc, char **argv)
 
         address = MBUS_ADDRESS_NETWORK_LAYER;
 		
+		//Reset device
 		if (init_slaves(handle,address) == 0)
 		{
 			mbus_disconnect(handle);
@@ -189,6 +190,7 @@ main(int argc, char **argv)
         // primary addressing
         address = atoi(addr_str);
 				
+		//Reset device
 		if (init_slaves(handle,address) == 0)
 		{
 			mbus_disconnect(handle);
